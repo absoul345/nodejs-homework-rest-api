@@ -2,7 +2,7 @@ const { Contact } = require("../../schemas");
 const { validateId } = require("./validateId");
 const { successRequest } = require("../../helpers");
 
-const patchById = async (req, res) => {
+const patchFavoriteById = async (req, res) => {
   const { id } = req.params;
   const { favorite } = req.body;
   validateId(id);
@@ -14,4 +14,4 @@ const patchById = async (req, res) => {
   successRequest(res, { result });
 };
 
-module.exports = patchById;
+module.exports = patchFavoriteById;

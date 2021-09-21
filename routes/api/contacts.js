@@ -20,6 +20,6 @@ router.put(
   controllerWrapper(ctrl.updateById)
 );
 
-router.patch("/:id", controllerWrapper(ctrl.patchById));
+router.patch("/:id", controllerWrapper(ctrl.patchFavoriteById));
 
 module.exports = router;
