@@ -1,16 +1,9 @@
-const contactsOperation = require("../../model/contacts");
-const { NotFound } = require("http-errors");
+const { Contact } = require("../../schemas");
+const { successRequest } = require("../../helpers");
 
 const getAll = async (req, res) => {
-  const contacts = await contactsOperation.getAll();
-  if (!contacts) {
-    throw new NotFound();
-  }
-  res.json({
-    status: "success",
-    code: 200,
-    data: { result: contacts },
-  });
+  const result = await Contact.find({});
+  successRequest(res, { result });
 };
 
 module.exports = getAll;

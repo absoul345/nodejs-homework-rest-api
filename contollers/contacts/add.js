@@ -1,16 +1,9 @@
-const contactsOperation = require("../../model/contacts");
-const { NotFound } = require("http-errors");
+const { Contact } = require("../../schemas");
+const { successRequest } = require("../../helpers");
 
 const add = async (req, res) => {
-  const contacts = await contactsOperation.add(req.body);
-  if (!contacts) {
-    throw new NotFound("This contact already exist");
-  }
-  res.status(201).json({
-    status: "add success",
-    code: 201,
-    data: { result: contacts },
-  });
+  const result = await Contact.create(req.body);
+  successRequest(res, { result }, 201);
 };
 
 module.exports = add;

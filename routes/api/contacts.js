@@ -14,10 +14,12 @@ router.post("/", validation(joiContactsSchema), controllerWrapper(ctrl.add));
 
 router.delete("/:id", controllerWrapper(ctrl.removeById));
 
-router.patch(
+router.put(
   "/:id",
   validation(joiContactsSchema),
-  controllerWrapper(ctrl.patchById)
+  controllerWrapper(ctrl.updateById)
 );
+
+router.patch("/:id", controllerWrapper(ctrl.patchById));
 
 module.exports = router;
