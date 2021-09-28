@@ -1,6 +1,11 @@
-const successRequest = (res, data, status = 200) => {
+const successRequest = ({
+  res,
+  data,
+  status = 200,
+  statMessage = "Request is success",
+}) => {
   res.status(status).json({
-    status: "Request is success",
+    status: statMessage,
     code: status,
     data,
   });
