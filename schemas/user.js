@@ -3,6 +3,7 @@ const { Schema, model } = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const gravatar = require("gravatar");
 
 const { SECRET_KEY } = process.env;
 
@@ -26,6 +27,13 @@ const userSchema = Schema(
     token: {
       type: String,
       default: null,
+    },
+    avatarsURL: {
+      type: String,
+      default: function () {
+        return gravatar.url(this.email, { s: "250" }, true);
+      },
+      require: true,
     },
   },
   { versionKey: false, timestamps: true }
