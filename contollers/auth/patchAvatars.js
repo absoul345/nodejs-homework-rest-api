@@ -14,10 +14,9 @@ const patchAvatars = async (req, res) => {
     const newFileName = `avatar_main_${_id}.${extention}`;
     const resultStorage = path.join(avatarsDir, newFileName);
     Jimp.read(tempStorage, (err, avatar) => {
-      console.log(tempStorage);
       if (err) throw err;
       return avatar
-        .resize(256, 256) // resize
+        .resize(250, 250) // resize
         .quality(60) // set JPEG quality
         .greyscale() // set greyscale
         .write(resultStorage); // save

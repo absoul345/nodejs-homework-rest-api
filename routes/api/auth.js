@@ -21,6 +21,8 @@ router.post("/login", validation(joiUserSchema), controllerWrapper(ctrl.login));
 
 router.post("/logout", authenticate, controllerWrapper(ctrl.logout));
 
+router.get("/verify/:verifyToken", controllerWrapper(ctrl.verify));
+
 router.patch(
   "/avatars",
   authenticate,
