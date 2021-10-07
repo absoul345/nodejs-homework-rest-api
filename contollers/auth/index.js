@@ -2,5 +2,6 @@ const register = require("./register");
 const login = require("./login");
 const logout = require("./logout");
 const patchAvatars = require("./patchAvatars");
+const verify = require("./verify");
 
-module.exports = { register, login, logout, patchAvatars };
+module.exports = { register, login, logout, patchAvatars, verify };

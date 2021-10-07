@@ -1,4 +1,4 @@
-const successRequest = ({
+const serverResponse = ({
   res,
   data,
   status = 200,
@@ -11,4 +11,4 @@ const successRequest = ({
   });
 };
 
-module.exports = successRequest;
+module.exports = serverResponse;

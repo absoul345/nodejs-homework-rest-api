@@ -1,3 +1,4 @@
-const successRequest = require("./successRequest");
+const serverResponse = require("./serverResponse");
+const sendEmail = require("./sendEmail");
 
-module.exports = { successRequest };
+module.exports = { serverResponse, sendEmail };

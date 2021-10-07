@@ -1,13 +1,13 @@
 const { User } = require("../../schemas");
-const { successRequest } = require("../../helpers");
+const { serverResponse } = require("../../helpers");
 
 const login = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
-  if (!user || !user.comparePassword(password)) {
-    successRequest({
+  if (!user || !user.comparePassword(password) || !user.verify) {
+    serverResponse({
       res,
-      data: { message: "Email or password is wrong" },
+      data: { message: "Email or password is wrong or email is not verify" },
       status: 401,
       statMessage: "error",
     });
@@ -18,7 +18,7 @@ const login = async (req, res) => {
 
   await User.findByIdAndUpdate(user._id, { token });
 
-  successRequest({
+  serverResponse({
     res,
     data: { token },
     status: 200,

@@ -1,6 +1,6 @@
 const { Contact } = require("../../schemas");
 const { validateId } = require("./validateId");
-const { successRequest } = require("../../helpers");
+const { serverResponse } = require("../../helpers");
 
 const patchFavoriteById = async (req, res) => {
   const { id } = req.params;
@@ -17,7 +17,7 @@ const patchFavoriteById = async (req, res) => {
       .status(404)
       .json({ status: "error", code: 404, message: `Not found this id ${id}` });
   }
-  successRequest({ res, data: result });
+  serverResponse({ res, data: result });
 };
 
 module.exports = patchFavoriteById;
