@@ -4,6 +4,7 @@ const { serverResponse, sendEmail } = require("../../helpers");
 const register = async (req, res) => {
   const { email, password } = req.body;
   const result = await User.findOne({ email });
+  const PORT = 3000;
   if (result) {
     serverResponse({
       res,
@@ -25,7 +26,7 @@ const register = async (req, res) => {
     to: "absoul345@gmail.com",
     subject: "Thenk you for registration",
     text: "fsdfsdfsdfs",
-    html: `<a href="http://localhost:3000/api/v1/users/verify/${verifyToken}" target="_blank">Confrim your's registration</a>`,
+    html: `<a href="http://localhost:${PORT}/api/v1/users/verify/${verifyToken}" target="_blank">Confrim your's registration</a>`,
   };
 
   await sendEmail(data);
